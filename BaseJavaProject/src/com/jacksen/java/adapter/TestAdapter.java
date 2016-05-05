@@ -6,17 +6,17 @@ public class TestAdapter {
 		VoltClassAdapter voltClassAdapter = new VoltClassAdapter();
 		int volt220 = voltClassAdapter.getVolt220();
 		int volt5 = voltClassAdapter.getVolt5();
-		System.out.println("ÀàÊÊÅäÆ÷: " + volt220 + "--" + volt5);
+		System.out.println("ç±»é€‚é…å™¨: " + volt220 + "--" + volt5);
 
 		VoltObjectAdapter voltObjectAdapter = new VoltObjectAdapter(
 				new Volt220());
 		volt5 = voltObjectAdapter.getVolt5();
 		volt220 = voltObjectAdapter.getVolt220();
-		System.out.println("¶ÔÏóÊÊÅäÆ÷: " + volt220 + "--" + volt5);
+		System.out.println("å¯¹è±¡é€‚é…å™¨: " + volt220 + "--" + volt5);
 		
 		VoltAdapter voltAdapter = new VoltAdapter();
 		int volt110 = voltAdapter.getVolt110();
-		System.out.println("Ä¬ÈÏÊÊÅäÆ÷: " + volt110);
+		System.out.println("é»˜è®¤é€‚é…å™¨: " + volt110);
 	}
 
 }

@@ -3,7 +3,7 @@ package com.jacksen.java.leetcode;
 import java.util.Stack;
 
 /**
- * ×Ö·û´®·­×ª
+ * å­—ç¬¦ä¸²ç¿»è½¬
  * 
  * @author jacksen
  * 
@@ -14,7 +14,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Ê±¼ä¸´ÔÓ¶È o(n)
+	 * æ—¶é—´å¤æ‚åº¦ o(n)
 	 * 
 	 * @param s
 	 * @return
@@ -29,7 +29,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Ê±¼ä¸´ÔÓ¶È o(n)
+	 * æ—¶é—´å¤æ‚åº¦ o(n)
 	 * 
 	 * @param s
 	 * @return
@@ -43,7 +43,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Ê¹ÓÃStringBufferÀàÖĞµÄreverse·½·¨
+	 * ä½¿ç”¨StringBufferç±»ä¸­çš„reverseæ–¹æ³•
 	 * 
 	 * @param s
 	 * @return
@@ -53,7 +53,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Ê±¼ä¸´ÔÓ¶Èo(n/2)
+	 * æ—¶é—´å¤æ‚åº¦o(n/2)
 	 * 
 	 * @param s
 	 * @return
@@ -71,7 +71,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Òì»òÔËËã
+	 * å¼‚æˆ–è¿ç®—
 	 * 
 	 * @param s
 	 * @return
@@ -91,7 +91,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Í¨¹ıÈëÕ»ºÍ³öÕ»µÄË¼ÏëÀ´×ö
+	 * é€šè¿‡å…¥æ ˆå’Œå‡ºæ ˆçš„æ€æƒ³æ¥åš
 	 * 
 	 * @param s
 	 * @return
@@ -110,7 +110,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * Í¨¹ıµİ¹éÀ´×ö
+	 * é€šè¿‡é€’å½’æ¥åš
 	 * 
 	 * @param s
 	 * @return

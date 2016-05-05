@@ -3,7 +3,7 @@ package com.jacksen.java.observer;
 import java.util.Observable;
 
 /**
- * ±»¹Û²ìÕßÀà ¼Ì³ĞObservableÀà£¬±íÊ¾Õâ¸öÀà¿ÉÒÔ±»¹Û²ì¡£
+ * è¢«è§‚å¯Ÿè€…ç±» ç»§æ‰¿Observableç±»ï¼Œè¡¨ç¤ºè¿™ä¸ªç±»å¯ä»¥è¢«è§‚å¯Ÿã€‚
  * 
  * @author Admin
  * 
@@ -18,9 +18,9 @@ public class SimpleObservable extends Observable {
 	public void setData(int data) {
 		if (this.data != data) {
 			this.data = data;
-			// ±êÖ¾×´Ì¬¸Ä±ä
+			// æ ‡å¿—çŠ¶æ€æ”¹å˜
 			setChanged();
-			// Í¨ÖªËùÓĞ¹Û²ìÕß
+			// é€šçŸ¥æ‰€æœ‰è§‚å¯Ÿè€…
 			notifyObservers("abc");
 		}
 	}

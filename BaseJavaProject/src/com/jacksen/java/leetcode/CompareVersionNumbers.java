@@ -11,7 +11,7 @@ public class CompareVersionNumbers {
 	}
 
 	/**
-	 * split ¸Ã·½·¨ÊÊÓÃÓÚÖ»ÓĞÒ»¸ö . µÄversion
+	 * split è¯¥æ–¹æ³•é€‚ç”¨äºåªæœ‰ä¸€ä¸ª . çš„version
 	 * 
 	 * @param version1
 	 * @param version2

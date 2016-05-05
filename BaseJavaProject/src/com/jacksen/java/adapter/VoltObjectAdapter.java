@@ -1,7 +1,7 @@
 package com.jacksen.java.adapter;
 
 /**
- * ÃæÏò¶ÔÏóµÄÊÊÅäÆ÷
+ * é¢å‘å¯¹è±¡çš„é€‚é…å™¨
  * 
  * @author Admin
  * 

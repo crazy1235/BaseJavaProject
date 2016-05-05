@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * ¹Û²ìÕß1ºÅ
+ * è§‚å¯Ÿè€…1å·
  * 
  * @author Admin
  * 

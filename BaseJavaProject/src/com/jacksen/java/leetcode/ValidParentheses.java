@@ -3,7 +3,7 @@ package com.jacksen.java.leetcode;
 import java.util.Stack;
 
 /**
- * ÑéÖ¤À¨ºÅÆ¥Åä
+ * éªŒè¯æ‹¬å·åŒ¹é…
  * 
  * @author jacksen
  * 
@@ -14,7 +14,7 @@ public class ValidParentheses {
 	}
 
 	/**
-	 * »ñÈ¡Æ¥ÅäµÄÀ¨ºÅ
+	 * è·å–åŒ¹é…çš„æ‹¬å·
 	 * 
 	 * @param c
 	 * @return
@@ -31,7 +31,7 @@ public class ValidParentheses {
 	}
 
 	/**
-	 * Ê¹ÓÃstackÀ´ÅĞ¶Ï
+	 * ä½¿ç”¨stackæ¥åˆ¤æ–­
 	 * 
 	 * @param s
 	 * @return

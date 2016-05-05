@@ -9,7 +9,7 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
 /**
- * ×¢½â´¦ÀíÆ÷
+ * æ³¨è§£å¤„ç†å™¨
  * @author Admin
  *
  */
@@ -29,7 +29,7 @@ public class MyProcessor extends AbstractProcessor {
 	}
 	
 	/**
-	 * ·µ»ØĞèÒª´¦ÀíµÄ×¢½âµÄÀàµÄgetCanonicalName¼¯ºÏ
+	 * è¿”å›éœ€è¦å¤„ç†çš„æ³¨è§£çš„ç±»çš„getCanonicalNameé›†åˆ
 	 */
 	@Override
 	public Set<String> getSupportedAnnotationTypes() {
@@ -38,7 +38,7 @@ public class MyProcessor extends AbstractProcessor {
 	}
 
 	/**
-	 * ·µ»ØSourceVersion.latestSupported()
+	 * è¿”å›SourceVersion.latestSupported()
 	 */
 	@Override
 	public SourceVersion getSupportedSourceVersion() {
