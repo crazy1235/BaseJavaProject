@@ -1,0 +1,2 @@
+# BaseJavaProject
+base java project
