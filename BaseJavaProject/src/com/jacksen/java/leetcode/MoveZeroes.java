@@ -49,7 +49,7 @@ public class MoveZeroes {
 	}
 
 	/**
-	 * 变种冒泡做法 时间复杂度o(n²)
+	 * 变种冒泡做法 --- 时间复杂度o(n²)
 	 * 
 	 * @author jacksen
 	 * @param nums
