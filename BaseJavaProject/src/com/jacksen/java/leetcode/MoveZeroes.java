@@ -8,7 +8,13 @@ package com.jacksen.java.leetcode;
  */
 public class MoveZeroes {
 	public static void main(String[] args) {
-		moveZeroes(new int[] { 0, 2, 1, 0, 3, 12 });
+		int[] nums = new int[] { 0, 2, 1, 0, 3, 12 };
+
+		moveZeroes5(nums);
+
+		for (int i : nums) {
+			System.out.print(i + " ");
+		}
 	}
 
 	/**
@@ -43,13 +49,11 @@ public class MoveZeroes {
 			}
 		}
 
-		for (int i : nums) {
-			System.out.print(i + " ");
-		}
 	}
 
 	/**
-	 * 变种冒泡做法 --- 时间复杂度o(n²)
+	 * 变种冒泡做法 <br/>
+	 * 时间复杂度o(n²)
 	 * 
 	 * @author jacksen
 	 * @param nums
@@ -67,9 +71,6 @@ public class MoveZeroes {
 					break;
 				}
 			}
-		}
-		for (int i : nums) {
-			System.out.print(i + " ");
 		}
 	}
 
@@ -97,9 +98,6 @@ public class MoveZeroes {
 			}
 			second++;
 		}
-		for (int i : nums) {
-			System.out.print(i + " ");
-		}
 	}
 
 	/**
@@ -119,8 +117,25 @@ public class MoveZeroes {
 				nums[i] = 0;
 			}
 		}
-		for (int i : nums) {
-			System.out.print(i + " ");
+	}
+
+	/**
+	 * 由RemoveElement的removeElement()方法改变过来的 <br/>
+	 * 时间复杂度o(2n) <br/>
+	 * 空间复杂度o(1)
+	 * 
+	 * @param nums
+	 */
+	public static void moveZeroes5(int[] nums) {
+		int count = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != 0) {
+				nums[count] = nums[i];
+				count++;
+			}
+		}
+		for (; count < nums.length; count++) {
+			nums[count] = 0;
 		}
 	}
 }

@@ -71,7 +71,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * 异或运算
+	 * 异或运算 -- 时间复杂度o(n/2)
 	 * 
 	 * @param s
 	 * @return
@@ -91,7 +91,7 @@ public class ReverseString {
 	}
 
 	/**
-	 * 通过入栈和出栈的思想来做
+	 * 通过入栈和出栈的思想来做 -- 时间复杂度o(2n)
 	 * 
 	 * @param s
 	 * @return

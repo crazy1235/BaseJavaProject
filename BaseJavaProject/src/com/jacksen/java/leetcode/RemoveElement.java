@@ -8,11 +8,20 @@ package com.jacksen.java.leetcode;
  */
 public class RemoveElement {
 	public static void main(String[] args) {
-		System.out.println(removeElement(new int[] { 3, 2, 2, 3 }, 3));
+		// System.out.println(removeElement(new int[] { 3, 2, 2, 3 }, 3));
+
+		int[] nums = new int[] { 1, 3, 2, 2, 3 };
+		nums = new int[] { 1 };
+		int length = removeElement2(nums, 1);
+		for (int i = 0; i < length; i++) {
+			System.out.print(nums[i] + " ");
+		}
 	}
 
 	/**
-	 * two pointers 时间复杂度 o(n) 空间复杂度o(1)
+	 * two pointers <br/>
+	 * 时间复杂度 o(n) <br/>
+	 * 空间复杂度o(1)
 	 * 
 	 * @param nums
 	 * @param val
@@ -30,7 +39,11 @@ public class RemoveElement {
 	}
 
 	/**
-	 * 该方法类似于 MoveZero 的moveZeroes3() --- 错误
+	 * 该方法类似于 MoveZero 的moveZeroes3() <br/>
+	 * 时间复杂度 o(2n) <br/>
+	 * 控件复杂度o(3) <br/>
+	 * 
+	 * 该方法不好
 	 * 
 	 * @param nums
 	 * @param val
@@ -38,6 +51,14 @@ public class RemoveElement {
 	 */
 	public static int removeElement2(int[] nums, int val) {
 		int length = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != val) {
+				length++;
+			}
+		}
+		if (length == 0) {
+			return 0;
+		}
 		int first = 0;
 		int second = 1;
 		while (second < nums.length) {
