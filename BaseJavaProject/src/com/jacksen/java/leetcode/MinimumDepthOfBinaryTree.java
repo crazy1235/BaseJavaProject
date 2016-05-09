@@ -26,11 +26,13 @@ public class MinimumDepthOfBinaryTree {
 		// node5.right = node6;
 		// node6.right = node4;
 
-		System.out.println(minDepth2(node1));
+		System.out.println(minDepth(node1));
 	}
 
 	/**
-	 * 采用广度遍历
+	 * 采用广度遍历 <br />
+	 * 
+	 * 1ms
 	 * 
 	 * @param root
 	 * @return
@@ -41,26 +43,31 @@ public class MinimumDepthOfBinaryTree {
 		}
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.add(root);
-		int depth = 1;
+		int depth = 0;
 		while (!queue.isEmpty()) {
-			TreeNode node = queue.remove();
-			if (node.left == null && node.right == null) {
-				break;
-			}
-			if (node.left != null) {
-				queue.add(node.left);
-			}
-			if (node.right != null) {
-				queue.add(node.right);
-			}
 			depth++;
+			int size = queue.size();
+			for (int i = 0; i < size; i++) {
+				TreeNode node = queue.remove();
+				if (node.left == null && node.right == null) {
+					queue.clear();
+					break;
+				}
+				if (node.left != null) {
+					queue.add(node.left);
+				}
+				if (node.right != null) {
+					queue.add(node.right);
+				}
+
+			}
 		}
 		return depth;
 	}
 
 	/**
 	 * 类似于MaximumDepthOfBinaryTree中的maxDepth()方法
-	 *  
+	 * 
 	 * @param root
 	 * @return
 	 */

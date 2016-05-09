@@ -1,5 +1,7 @@
 package com.jacksen.java.leetcode;
 
+import java.util.Stack;
+
 /**
  * 104. Maximum Depth of Binary Tree
  * 
@@ -17,13 +19,14 @@ public class MaximumDepthOfBinaryTree {
 		TreeNode node6 = new TreeNode(6);
 
 		node1.left = node2;
-		node1.right = node3;
-		node2.left = node4;
+		node1.right = node6;
+		node2.left = node3;
 		node2.right = node5;
-		node5.right = node6;
+		node3.left = node4;
+		// node5.right = node6;
 		// node6.right = node4;
 
-		System.out.println(maxDepth(node1));
+		System.out.println(maxDepth2(node1));
 	}
 
 	/**
@@ -37,6 +40,40 @@ public class MaximumDepthOfBinaryTree {
 			return 0;
 		}
 		return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+	}
+
+	/**
+	 * 深度优先遍历，看栈的最大深度
+	 * 
+	 * 暂时不对.
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public static int maxDepth2(TreeNode root) {
+		if (root == null) {
+			return 0;
+		}
+		int depth = 0;
+		Stack<TreeNode> stack = new Stack<>();
+		stack.add(root);
+		while (!stack.empty()) {
+			TreeNode node = stack.pop();
+			if (node.right != null) {
+				stack.push(node.right);
+			}
+			if (node.left != null) {
+				stack.push(node.left);
+			}
+			if (node.right != null || node.left != null) {
+				depth++;
+			}
+			if (node.left != null && node.right != null) {
+				depth--;
+			}
+		}
+		return ++depth;
+
 	}
 }
 
