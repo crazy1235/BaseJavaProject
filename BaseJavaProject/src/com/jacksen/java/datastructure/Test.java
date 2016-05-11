@@ -1,17 +1,23 @@
 package com.jacksen.java.datastructure;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Test {
 	public static void main(String[] args) {
 		// List<String> list = new LinkedList()<>();
 
 		// ArrayList<E>
+		// LinkedList<String> list = new LinkedList<>();
+		// list.removeFirst()
 		// System.out.println((null).equals(null));
 
 		// testArrayList();
 
-		testSingleLinkedList();
+		// testSingleLinkedList();
+
+		testStaticList();
 
 	}
 
@@ -49,10 +55,10 @@ public class Test {
 		//
 		// int last = linkedList.removeLast();
 		// System.out.println("last item is : " + last);
-//
-//		int ele = linkedList.remove(3);
-//		System.out.println("the removed node is : " + ele);
-		
+		//
+		// int ele = linkedList.remove(3);
+		// System.out.println("the removed node is : " + ele);
+
 		System.out.println(linkedList.remove(new Integer(1203)));
 
 		for (int i = 0; i < linkedList.size(); i++) {
@@ -62,4 +68,27 @@ public class Test {
 		System.out.println(linkedList.getIndex(111));
 	}
 
+	private static void testStaticList() {
+		StaticList<String> list = new StaticList<>();
+		// System.out.println(list.isEmpty());
+
+		list.add("abc");
+		list.add("456");
+
+//		list.add("xxx");
+//		list.set(1, "4567");
+
+		list.addFirst("sss");
+		
+		list.addLast("lll");
+		list.addFirst("first");
+		
+		list.addLast("end");
+//		list.removeLast();
+
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+
+	}
 }
