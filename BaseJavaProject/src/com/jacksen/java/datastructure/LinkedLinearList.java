@@ -1,7 +1,7 @@
 package com.jacksen.java.datastructure;
 
 /**
- * 链式存储结构
+ * 双向链表
  * 
  * @author jacksen
  * @date 2016-5-11 下午2:27:12
@@ -80,7 +80,7 @@ public class LinkedLinearList<E> extends AbstractLinearList<E> implements
 	public int size() {
 		return size;
 	}
-	
+
 	private static class Node<E> {
 
 		E item;
