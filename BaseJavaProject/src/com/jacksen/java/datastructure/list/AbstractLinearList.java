@@ -1,4 +1,4 @@
-package com.jacksen.java.datastructure;
+package com.jacksen.java.datastructure.list;
 
 public abstract class AbstractLinearList<E> implements LinearList<E> {
 

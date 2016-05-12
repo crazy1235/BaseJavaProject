@@ -1,4 +1,4 @@
-package com.jacksen.java.datastructure;
+package com.jacksen.java.datastructure.list;
 
 import java.util.Iterator;
 import java.util.LinkedList;
