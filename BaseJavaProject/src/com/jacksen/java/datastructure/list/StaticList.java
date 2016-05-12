@@ -3,7 +3,6 @@ package com.jacksen.java.datastructure.list;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import org.omg.CORBA.Current;
 
 /**
  * 静态链表 <br />
@@ -50,8 +49,13 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-
+		freeIndex = 0;
+		headIndex = 0;
+		size = 0;
+		for (int i = 0; i < MAX_SIZE; i++) {
+			elementDatas[i] = new Node<>();
+			elementDatas[i].next = i + 1;
+		}
 	}
 
 	@Override
@@ -72,14 +76,25 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 
 	@Override
 	public int getIndex(E e) {
-		// TODO Auto-generated method stub
-		return 0;
+		if (e == null) {
+			for (int i = 0; i < size; i++) {
+				if (null == elementDatas[getRealIndex(i)].item) {
+					return i;
+				}
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (e.equals(elementDatas[getRealIndex(i)].item)) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
 	@Override
 	public boolean contains(E e) {
-		// TODO Auto-generated method stub
-		return false;
+		return getIndex(e) != -1;
 	}
 
 	@Override
@@ -117,32 +132,113 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 		elementDatas[freeIndex].item = e;
 		freeIndex = elementDatas[freeIndex].next;
 
-		size++;
-		
 		// 将非空闲最后指针指向新结点。
-		int lastDataIndex = headIndex;
-		for (int i = 0; i < size; i++) {
-			lastDataIndex = elementDatas[getRealIndex(i)].next;
+		if (headIndex != 0) {
+			int lastDataIndex = headIndex;
+			for (int i = 0; i < size - 1; i++) {
+				lastDataIndex = elementDatas[getRealIndex(i)].next;
+			}
+			elementDatas[lastDataIndex].next = temp;
 		}
-		elementDatas[lastDataIndex].next = temp;
+		size++;
 	}
 
 	@Override
 	public void add(int index, E e) {
-		// TODO Auto-generated method stub
+		isPositionIndex(index);
 
+		if (0 == index) {
+			addFirst(e);
+			return;
+		}
+		if (size == index) {
+			addLast(e);
+			return;
+		}
+
+		int temp = freeIndex;
+		elementDatas[freeIndex].item = e;
+		freeIndex = elementDatas[freeIndex].next;
+
+		int realIndex = getRealIndex(--index);
+
+		elementDatas[temp].next = elementDatas[realIndex].next;
+		elementDatas[realIndex].next = temp;
+
+		size++;
 	}
 
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		checkIndex(index);
+		if (0 == index) {
+			return removeFirst();
+		}
+		if (size - 1 == index) {
+			return removeLast();
+		}
+
+		int preRealIndex = getRealIndex(--index);
+		int realIndex = elementDatas[preRealIndex].next;
+		E oldEle = elementDatas[realIndex].item;
+		elementDatas[preRealIndex].next = elementDatas[realIndex].next;
+
+		size--;
+		return oldEle;
 	}
 
 	@Override
 	public boolean remove(E e) {
-		// TODO Auto-generated method stub
+		if (null == e) {
+			for (int i = 0; i < size; i++) {
+				if (null == elementDatas[getRealIndex(i)].item) {
+					if (i == 0) {
+						removeFirst();
+						return true;
+					}
+					int temp = getRealIndex(i);
+					elementDatas[getRealIndex(i - 1)].next = elementDatas[getRealIndex(i)].next;
+					elementDatas[temp].next = freeIndex;
+					freeIndex = temp;
+					
+					size--;
+					return true;
+				}
+			}
+		} else {
+			for (int i = 0; i < size; i++) {
+				if (e.equals(elementDatas[getRealIndex(i)].item)) {
+					if (i == 0) {
+						removeFirst();
+						return true;
+					}
+					int temp = getRealIndex(i);
+					elementDatas[getRealIndex(i - 1)].next = elementDatas[getRealIndex(i)].next;
+					elementDatas[temp].next = freeIndex;
+					freeIndex = temp;
+					
+					size--;
+					return true;
+				}
+			}
+		}
 		return false;
+	}
+
+	/**
+	 * 移除第一个item
+	 * 
+	 * @return
+	 */
+	public E removeFirst() {
+		E oldEle = elementDatas[headIndex].item;
+		int temp = headIndex;
+		headIndex = elementDatas[headIndex].next;
+		//
+		elementDatas[temp].next = freeIndex;
+		freeIndex = temp;
+		size--;
+		return oldEle;
 	}
 
 	/**

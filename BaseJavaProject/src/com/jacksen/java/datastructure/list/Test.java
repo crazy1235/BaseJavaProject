@@ -74,21 +74,33 @@ public class Test {
 
 		list.add("abc");
 		list.add("456");
-
-//		list.add("xxx");
+		list.add("999");
 //		list.set(1, "4567");
+//
+//		list.addFirst("sss");
+//
+//		list.addLast("lll");
+//		list.addFirst("first");
+//
+//		list.addLast("end");
+		// list.removeLast();
 
-		list.addFirst("sss");
+		// System.out.println("the index of xxx is : " + list.getIndex("xxx"));
+
+//		list.add(1, "10000");
 		
-		list.addLast("lll");
-		list.addFirst("first");
-		
-		list.addLast("end");
+//		list.remove(1);
+//		list.removeFirst();
 //		list.removeLast();
+		
+		System.out.println(list.remove("abc"));
 
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
+
+		// list.clear();
+		// System.out.println("list.isEmpty() : " + list.isEmpty());
 
 	}
 }
