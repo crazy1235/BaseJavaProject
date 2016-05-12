@@ -3,7 +3,6 @@ package com.jacksen.java.datastructure.list;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-
 /**
  * 静态链表 <br />
  * 
@@ -15,7 +14,7 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 		LinearList<E> {
 
 	/**
-	 * max length of the array
+	 * 定义数组初始长度
 	 */
 	private static int MAX_SIZE = 500;
 
@@ -34,6 +33,9 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 	 */
 	private Node<E>[] elementDatas;
 
+	/**
+	 * 初始化数组
+	 */
 	public StaticList() {
 		elementDatas = new Node[MAX_SIZE];
 		for (int i = 0; i < MAX_SIZE; i++) {
@@ -200,7 +202,7 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 					elementDatas[getRealIndex(i - 1)].next = elementDatas[getRealIndex(i)].next;
 					elementDatas[temp].next = freeIndex;
 					freeIndex = temp;
-					
+
 					size--;
 					return true;
 				}
@@ -216,7 +218,7 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 					elementDatas[getRealIndex(i - 1)].next = elementDatas[getRealIndex(i)].next;
 					elementDatas[temp].next = freeIndex;
 					freeIndex = temp;
-					
+
 					size--;
 					return true;
 				}
@@ -262,7 +264,8 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 	}
 
 	/**
-	 * 扩容
+	 * 扩容<br />
+	 * 简单的方法
 	 */
 	private void ensureCapacity() {
 		if (size >= MAX_SIZE) {
@@ -292,18 +295,6 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 		int next;
 
 		public Node() {
-
-		}
-
-		public Node(E item) {
-			super();
-			this.item = item;
-		}
-
-		public Node(E item, int next) {
-			super();
-			this.item = item;
-			this.next = next;
 		}
 	}
 
