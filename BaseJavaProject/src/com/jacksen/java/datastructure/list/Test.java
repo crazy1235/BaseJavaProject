@@ -1,14 +1,11 @@
 package com.jacksen.java.datastructure.list;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Test {
+
 	public static void main(String[] args) {
 		// List<String> list = new LinkedList()<>();
 
-		// ArrayList<E>
+//		 ArrayList<E>
 		// LinkedList<String> list = new LinkedList<>();
 		// list.removeFirst()
 		// System.out.println((null).equals(null));
@@ -17,8 +14,37 @@ public class Test {
 
 		// testSingleLinkedList();
 
-		testStaticList();
+		// testStaticList();
 
+		// testLinkedLinearList();
+
+		// testSingleCyclicLinkedList();
+	}
+
+	private static void testSingleCyclicLinkedList() {
+		SingleCyclicLinkedList<String> list = new SingleCyclicLinkedList<>();
+		list.add("111");
+		list.add("222");
+		list.addFirst("000");
+		list.addLast("999");
+
+		System.out.println("old ele is : " + list.set(3, list.get(3) + "!!"));
+
+		// list.clear();
+
+		// System.out.println(list.getIndex("222"));
+
+		list.add(4, "123");
+
+		// list.removeFirst();
+
+		// list.removeLast();
+
+		list.remove("000");
+
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 	}
 
 	private static void testArrayList() {
@@ -42,13 +68,13 @@ public class Test {
 		linkedList.add(555);
 		linkedList.add(111);
 		linkedList.add(789);
-
-		linkedList.addFirst(666);
-		linkedList.addLast(999);
+		//
+		// linkedList.addFirst(666);
+		// linkedList.addLast(999);
 
 		// linkedList.clear();
 		// linkedList.set(6, 222);
-		linkedList.add(6, 567);
+		linkedList.add(1, 567);
 
 		// int first = linkedList.removeFirst();
 		// System.out.println("first item is : " + first);
@@ -59,13 +85,13 @@ public class Test {
 		// int ele = linkedList.remove(3);
 		// System.out.println("the removed node is : " + ele);
 
-		System.out.println(linkedList.remove(new Integer(1203)));
+		// System.out.println(linkedList.remove(new Integer(1203)));
 
 		for (int i = 0; i < linkedList.size(); i++) {
 			System.out.println(linkedList.get(i));
 		}
 
-		System.out.println(linkedList.getIndex(111));
+		// System.out.println(linkedList.getIndex(111));
 	}
 
 	private static void testStaticList() {
@@ -75,24 +101,24 @@ public class Test {
 		list.add("abc");
 		list.add("456");
 		list.add("999");
-//		list.set(1, "4567");
-//
-//		list.addFirst("sss");
-//
-//		list.addLast("lll");
-//		list.addFirst("first");
-//
-//		list.addLast("end");
+		// list.set(1, "4567");
+		//
+		// list.addFirst("sss");
+		//
+		// list.addLast("lll");
+		// list.addFirst("first");
+		//
+		// list.addLast("end");
 		// list.removeLast();
 
 		// System.out.println("the index of xxx is : " + list.getIndex("xxx"));
 
-//		list.add(1, "10000");
-		
-//		list.remove(1);
-//		list.removeFirst();
-//		list.removeLast();
-		
+		// list.add(1, "10000");
+
+		// list.remove(1);
+		// list.removeFirst();
+		// list.removeLast();
+
 		System.out.println(list.remove("abc"));
 
 		for (int i = 0; i < list.size(); i++) {
@@ -101,6 +127,33 @@ public class Test {
 
 		// list.clear();
 		// System.out.println("list.isEmpty() : " + list.isEmpty());
+
+	}
+
+	private static void testLinkedLinearList() {
+		LinkedLinearList<String> list = new LinkedLinearList<>();
+		list.add("111");
+		list.add("222");
+		list.addFirst("000");
+		list.addLast("999");
+
+		list.add(3, "456");
+
+		System.out.println("index : " + list.getIndex("456"));
+
+		list.set(3, list.get(3) + "abc");
+
+		// System.out.println("old first is : " + list.removeFirst());
+
+		// System.out.println("old last is : " + list.removeLast());
+
+		System.out.println("the removed ele is : " + list.remove(2));
+
+		System.out.println(list.size());
+
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 
 	}
 }

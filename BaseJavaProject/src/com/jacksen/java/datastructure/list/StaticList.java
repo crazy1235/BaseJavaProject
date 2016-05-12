@@ -147,7 +147,7 @@ public class StaticList<E> extends AbstractLinearList<E> implements
 
 	@Override
 	public void add(int index, E e) {
-		isPositionIndex(index);
+		checkPositionIndex(index);
 
 		if (0 == index) {
 			addFirst(e);

@@ -19,7 +19,7 @@ public abstract class AbstractLinearList<E> implements LinearList<E> {
 	 * 
 	 * @param index
 	 */
-	protected void isPositionIndex(int index) {
+	protected void checkPositionIndex(int index) {
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}

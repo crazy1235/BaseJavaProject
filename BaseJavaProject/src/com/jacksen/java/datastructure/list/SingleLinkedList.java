@@ -18,7 +18,7 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 	private Node<E> firstNode;
 
 	public SingleLinkedList() {
-		firstNode = new Node<E>(null);
+		firstNode = new Node<E>();
 	}
 
 	@Override
@@ -28,11 +28,15 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 
 	@Override
 	public void clear() {
-		Node<E> temp = firstNode;
+		Node<E> temp = firstNode.next;
+		firstNode.item = null;
+		firstNode.next = null;
+		
 		while (temp != null) {
-			temp.item = null;
-			temp.next = null;
+			firstNode = temp;
 			temp = temp.next;
+			firstNode.item = null;
+			firstNode.next = null;
 		}
 		size = 0;
 	}
@@ -105,7 +109,7 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 
 	@Override
 	public void add(int index, E e) {
-		isPositionIndex(index);
+		checkPositionIndex(index);
 		if (index == size) {
 			addLast(e);
 			return;
@@ -192,7 +196,7 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 					preTemp.next = tempNode.next;
 					tempNode.item = null;
 					tempNode.next = null;
-					
+
 					size--;
 					return true;
 				}
@@ -205,7 +209,7 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 					preTemp.next = tempNode.next;
 					tempNode.item = null;
 					tempNode.next = null;
-					
+
 					size--;
 					return true;
 				}
@@ -276,13 +280,14 @@ public class SingleLinkedList<E> extends AbstractLinearList<E> implements
 		E item;
 		Node<E> next;
 
+		public Node() {
+		}
+
 		public Node(E item) {
-			super();
 			this.item = item;
 		}
 
 		public Node(E item, Node<E> next) {
-			super();
 			this.item = item;
 			this.next = next;
 		}
