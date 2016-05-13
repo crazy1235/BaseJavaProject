@@ -1,11 +1,27 @@
 package com.jacksen.java.datastructure.list;
 
+import java.util.ArrayList;
+
 public class Test {
 
 	public static void main(String[] args) {
 		// List<String> list = new LinkedList()<>();
 
-//		 ArrayList<E>
+		ArrayList<String> list = new ArrayList<>();
+		list.add("123");
+		list.add("456");
+		list.add("789");
+		list.add("000");
+		
+		String[] arr = new String[6];
+
+		arr = list.toArray(arr);
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+		
+		
 		// LinkedList<String> list = new LinkedList<>();
 		// list.removeFirst()
 		// System.out.println((null).equals(null));
