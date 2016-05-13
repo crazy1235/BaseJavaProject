@@ -1,7 +1,6 @@
 package com.jacksen.java.datastructure.stack;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 /**
  * 线性存储结构栈
