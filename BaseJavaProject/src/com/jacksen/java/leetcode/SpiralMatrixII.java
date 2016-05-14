@@ -1,7 +1,8 @@
 package com.jacksen.java.leetcode;
 
 /**
- * 59. Spiral Matrix II
+ * 59. Spiral Matrix II <br />
+ * https://leetcode.com/problems/spiral-matrix-ii/
  * 
  * @author jacksen
  * 
@@ -126,7 +127,7 @@ public class SpiralMatrixII {
 		int index = 1;
 
 		int i = 0;
-		
+
 		while (top + bottom < n) {
 			// top
 			for (i = left; i < n - right; i++) {
