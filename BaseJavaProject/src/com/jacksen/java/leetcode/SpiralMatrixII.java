@@ -33,9 +33,10 @@ public class SpiralMatrixII {
 		int bottom = 0;
 		int left = 0;
 		int index = 1;
+		int i = 0;
 		while (true) {
 			// top
-			for (int i = left; i < n - right; i++) {
+			for (i = left; i < n - right; i++) {
 				result[top][i] = index++;
 			}
 			top++;
@@ -43,7 +44,7 @@ public class SpiralMatrixII {
 				break;
 			}
 			// right
-			for (int i = top; i < n - bottom; i++) {
+			for (i = top; i < n - bottom; i++) {
 				result[i][n - 1 - right] = index++;
 			}
 			right++;
@@ -51,7 +52,7 @@ public class SpiralMatrixII {
 				break;
 			}
 			// bottom
-			for (int i = n - 1 - right; i >= left; i--) {
+			for (i = n - 1 - right; i >= left; i--) {
 				result[n - 1 - bottom][i] = index++;
 			}
 			bottom++;
@@ -59,7 +60,7 @@ public class SpiralMatrixII {
 				break;
 			}
 			// left
-			for (int i = n - 1 - bottom; i >= top; i--) {
+			for (i = n - 1 - bottom; i >= top; i--) {
 				result[i][left] = index++;
 			}
 			left++;
@@ -67,12 +68,11 @@ public class SpiralMatrixII {
 				break;
 			}
 		}
-
 		return result;
 	}
 
 	/**
-	 * 0ms
+	 * 由于是n * n的数组，所以只需要判断top+bottom 或者left+right即可。
 	 * 
 	 * @param n
 	 * @return
@@ -85,6 +85,7 @@ public class SpiralMatrixII {
 		int bottom = 0;
 		int left = 0;
 		int index = 1;
+		
 		while (top + bottom < n) {
 			// top
 			for (int i = left; i < n - right; i++) {
@@ -112,7 +113,7 @@ public class SpiralMatrixII {
 	}
 
 	/**
-	 * 将i,j变量放到外边，不用每次for循环定义了
+	 * 将i变量放到外边，不用每次for循环定义了
 	 * 
 	 * @param n
 	 * @return
@@ -120,35 +121,35 @@ public class SpiralMatrixII {
 	public static int[][] generateMatrix3(int n) {
 		int[][] result = new int[n][n];
 
-		int top = 0;
-		int right = 0;
-		int bottom = 0;
-		int left = 0;
+		int topOffset = 0;
+		int rightOffset = 0;
+		int bottomOffset = 0;
+		int leftOffset = 0;
 		int index = 1;
 
 		int i = 0;
 
-		while (top + bottom < n) {
+		while (topOffset + bottomOffset < n) {
 			// top
-			for (i = left; i < n - right; i++) {
-				result[top][i] = index++;
+			for (i = leftOffset; i < n - rightOffset; i++) {
+				result[topOffset][i] = index++;
 			}
-			top++;
+			topOffset++;
 			// right
-			for (i = top; i < n - bottom; i++) {
-				result[i][n - 1 - right] = index++;
+			for (i = topOffset; i < n - bottomOffset; i++) {
+				result[i][n - 1 - rightOffset] = index++;
 			}
-			right++;
+			rightOffset++;
 			// bottom
-			for (i = n - 1 - right; i >= left; i--) {
-				result[n - 1 - bottom][i] = index++;
+			for (i = n - 1 - rightOffset; i >= leftOffset; i--) {
+				result[n - 1 - bottomOffset][i] = index++;
 			}
-			bottom++;
+			bottomOffset++;
 			// left
-			for (i = n - 1 - bottom; i >= top; i--) {
-				result[i][left] = index++;
+			for (i = n - 1 - bottomOffset; i >= topOffset; i--) {
+				result[i][leftOffset] = index++;
 			}
-			left++;
+			leftOffset++;
 		}
 
 		return result;

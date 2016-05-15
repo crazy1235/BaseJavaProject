@@ -44,41 +44,42 @@ public class SpiralMatrix {
 			return result;
 		}
 		int n = matrix[0].length;// columns
-		int top = 0;
-		int right = 0;
-		int bottom = 0;
-		int left = 0;
+		int topOffset = 0;
+		int rightOffset = 0;
+		int bottomOffset = 0;
+		int leftOffset = 0;
+		int i = 0;
 		while (true) {
 			// top
-			for (int i = left; i < n - right; i++) {
-				result.add(matrix[top][i]);
+			for (i = leftOffset; i < n - rightOffset; i++) {
+				result.add(matrix[topOffset][i]);
 			}
-			top++;
-			if (top + bottom == m) {
+			topOffset++;
+			if (topOffset + bottomOffset == m) {
 				break;
 			}
 			// right
-			for (int i = top; i < m - bottom; i++) {
-				result.add(matrix[i][n - 1 - right]);
+			for (i = topOffset; i < m - bottomOffset; i++) {
+				result.add(matrix[i][n - 1 - rightOffset]);
 			}
-			right++;
-			if (left + right == n) {
+			rightOffset++;
+			if (leftOffset + rightOffset == n) {
 				break;
 			}
 			// bottom
-			for (int i = n - 1 - right; i >= left; i--) {
-				result.add(matrix[m - 1 - bottom][i]);
+			for (i = n - 1 - rightOffset; i >= leftOffset; i--) {
+				result.add(matrix[m - 1 - bottomOffset][i]);
 			}
-			bottom++;
-			if (top + bottom == m) {
+			bottomOffset++;
+			if (topOffset + bottomOffset == m) {
 				break;
 			}
 			// left
-			for (int i = m - 1 - bottom; i >= top; i--) {
-				result.add(matrix[i][left]);
+			for (i = m - 1 - bottomOffset; i >= topOffset; i--) {
+				result.add(matrix[i][leftOffset]);
 			}
-			left++;
-			if (left + right == n) {
+			leftOffset++;
+			if (leftOffset + rightOffset == n) {
 				break;
 			}
 		}
