@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.jacksen.java.datastructure.string.JackString;
 
 /**
  * 
@@ -13,7 +14,8 @@ import java.util.List;
 public class Test3 {
 
 	public static void main(String[] args) {
-		
+		char[] value = new char[] { '1', '2', '3', '4' };
+		JackString str = new JackString(value);
+		System.out.println(str);
 	}
-
 }
