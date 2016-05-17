@@ -7,7 +7,7 @@ package com.jacksen.java.leetcode;
  */
 public class CompareVersionNumbers {
 	public static void main(String[] args) {
-		System.out.println(compareVersion2("1.1.1", "1.1"));
+		System.out.println(compareVersion3("1.1.0", "1.1"));
 	}
 
 	/**
@@ -55,6 +55,9 @@ public class CompareVersionNumbers {
 	}
 
 	/**
+	 * 小数点隔开的数字依次比较
+	 * 
+	 * @author jacksen
 	 * 
 	 * @param version1
 	 * @param version2
@@ -84,4 +87,47 @@ public class CompareVersionNumbers {
 		}
 		return 0;
 	}
+
+	/**
+	 * 同样是小数点隔开的数字依次比较，不过不是使用interger.parseInt()进行转换。而是采用 -'0'的方法。
+	 * 
+	 * @author from Internet
+	 * 
+	 * @param version1
+	 * @param version2
+	 * @return
+	 */
+	public static int compareVersion3(String version1, String version2) {
+		int temp1;
+		int temp2;
+
+		int i = 0;
+		int j = 0;
+
+		while (i < version1.length() || j < version2.length()) {
+			temp1 = 0;
+			temp2 = 0;
+			//
+			while (i < version1.length() && '.' != version1.charAt(i)) {
+				temp1 = temp1 * 10 + (version1.charAt(i) - '0');
+				i++;
+			}
+			i++;
+			//
+			while (j < version2.length() && '.' != version2.charAt(j)) {
+				temp2 = temp2 * 10 + (version2.charAt(j) - '0');
+				j++;
+			}
+			j++;
+			//
+			if (temp1 > temp2) {
+				return 1;
+			}
+			if (temp1 < temp2) {
+				return -1;
+			}
+		}
+		return 0;
+	}
+
 }
