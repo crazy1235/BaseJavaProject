@@ -23,7 +23,8 @@ public class TwoSum {
 	 * 嵌套循环 <br />
 	 * 注意nums中有可能出现负数 <br />
 	 * 
-	 * 时间复杂度是o(n²)
+	 * 时间复杂度是O(n²) <br />
+	 * 空间复杂度是O(1)
 	 * 
 	 * @param nums
 	 * @param target
@@ -37,15 +38,10 @@ public class TwoSum {
 		}
 
 		for (int i = 0; i < nums.length; i++) {
-			for (int j = 0; j < nums.length; j++) {
-				if (nums[i] + nums[j] == target && i != j) {
-					if (i > j) {
-						result[0] = j;
-						result[1] = i;
-					} else {
-						result[0] = i;
-						result[1] = j;
-					}
+			for (int j = i + 1; j < nums.length; j++) {
+				if (nums[i] + nums[j] == target) {
+					result[0] = i;
+					result[1] = j;
 					return result;
 				}
 			}
