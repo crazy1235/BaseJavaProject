@@ -9,9 +9,9 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		// testBinaryTree();
+		testBinaryTree();
 
-		testThreadedBinaryTree();
+		// testThreadedBinaryTree();
 
 	}
 
@@ -32,10 +32,27 @@ public class Test {
 		node5.rightNode = node7;
 
 		// BinaryTree.preOrderTraverse(node1);
+		//
+		// System.out.println();
+		//
+		// BinaryTree.preOrderNoRecursion(node1);
+		//
+		// System.out.println();
+		//
+		// BinaryTree.preOrderNoRecursion2(node1);
 
-		// BinaryTree.InOrderTraverse(node1);
+		/*BinaryTree.InOrderTraverse(node1);
+
+		System.out.println();
+
+		BinaryTree.InOrderNoRecursion(node1);*/
 
 		// BinaryTree.postOrderTraverse(node1);
+
+		// BinaryTree.layerTraverse(node1);
+		
+		BinaryTree.postOrderNoRecursion(node1);
+
 	}
 
 	private static void testThreadedBinaryTree() {
@@ -54,8 +71,6 @@ public class Test {
 		node3.rightChild = node6;
 
 		ThreadedBinaryTree.InOrderThreaded(node1, null);
-		
-		
 
 	}
 
