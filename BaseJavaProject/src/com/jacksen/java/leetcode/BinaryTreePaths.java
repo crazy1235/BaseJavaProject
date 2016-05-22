@@ -1,10 +1,7 @@
 package com.jacksen.java.leetcode;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -35,7 +32,7 @@ public class BinaryTreePaths {
 		//
 		BinaryTreePaths bTreePaths = new BinaryTreePaths();
 
-		List<String> resultList = bTreePaths.binaryTreePaths4(node1);
+		List<String> resultList = bTreePaths.binaryTreePaths3(node1);
 		for (int i = 0; i < resultList.size(); i++) {
 			System.out.println(resultList.get(i));
 		}
@@ -45,10 +42,6 @@ public class BinaryTreePaths {
 
 	/**
 	 * 递归方式
-	 * 
-	 * <br />
-	 * 
-	 * Run Time : 4ms
 	 * 
 	 * @param root
 	 * @return
@@ -64,7 +57,6 @@ public class BinaryTreePaths {
 	}
 
 	/**
-	 * DFS
 	 * 
 	 * @param resultList
 	 * @param node
@@ -100,7 +92,6 @@ public class BinaryTreePaths {
 	/**
 	 * 递归方法二 <br />
 	 * 
-	 * https://leetcode.com/discuss/85025/sharing-my-recursive-java-solution
 	 * 
 	 * @param root
 	 * @return
@@ -127,14 +118,9 @@ public class BinaryTreePaths {
 
 	/**
 	 * 递归方法三 <br />
-	 * 
 	 * 在方法二的基础上修改，将String改成StringBuilder <br />
 	 * 
 	 * https://leetcode.com/discuss/92435/java-2ms-solution-using-stringbuilder
-	 * 
-	 * <br />
-	 * 
-	 * Run Time : 2ms
 	 * 
 	 * @param root
 	 * @return
@@ -162,42 +148,70 @@ public class BinaryTreePaths {
 
 	/**
 	 * 通过栈来做<br />
-	 * 
-	 * https://leetcode.com/discuss/83013/my-java-non-recursion-solution-using-
-	 * stack-and-wrapper
-	 * 
-	 * <br />
-	 * 
-	 * Run Time : 5ms
+	 * 利用后序非递归遍历二叉树的方法变形而来
 	 * 
 	 * @param root
 	 * @return
 	 */
 
-	public List<String> binaryTreePaths4(TreeNode root) {
+	public static List<String> binaryTreePaths4(TreeNode root) {
+		List<String> resultList = new ArrayList<String>();
+
 		if (root == null) {
 			return resultList;
 		}
-
-		Stack<Wrapper> stack = new Stack<>();
-		stack.add(new Wrapper(root, root.val + ""));
-		Wrapper wrapper = null;
+		Stack<MarkTreeNode> stack = new Stack<>();
+		MarkTreeNode markTreeNode = new MarkTreeNode(root);
+		stack.push(markTreeNode);
 		while (!stack.isEmpty()) {
-			wrapper = stack.pop();
-			if (wrapper.node.left == null && wrapper.node.right == null) {
-				resultList.add(wrapper.path);
+
+			while ((markTreeNode = stack.peek()).node != null) {
+				markTreeNode = new MarkTreeNode(markTreeNode.node.left, 1);
+				stack.push(markTreeNode);
 			}
-			if (wrapper.node.left != null) {
-				stack.add(new Wrapper(wrapper.node.left, wrapper.path + "->"
-						+ wrapper.node.left.val));
+			//
+			stack.pop();
+			//
+
+			markTreeNode = stack.peek();
+			while (markTreeNode.node != null) {
+				if (markTreeNode.mark == 2) {
+					resultList.add(getOnePath(stack));
+					stack.pop();
+					if (stack.isEmpty()) {
+						break;
+					}
+					markTreeNode = stack.peek();
+				} else {
+					markTreeNode.mark = 2;
+					markTreeNode = new MarkTreeNode(markTreeNode.node.right, 1);
+					stack.push(markTreeNode);
+					break;
+				}
 			}
-			if (wrapper.node.right != null) {
-				stack.add(new Wrapper(wrapper.node.right, wrapper.path + "->"
-						+ wrapper.node.right.val));
-			}
+
+			// 叶子结点
+
+			//
+			stack.pop();
 		}
 
 		return resultList;
+	}
+
+	/**
+	 * 获取一条路径
+	 * 
+	 * @param stack
+	 * @return
+	 */
+	public static String getOnePath(Stack<MarkTreeNode> stack) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < stack.size() - 1; i++) {
+			sb.append(stack.get(i).node.val + "->");
+		}
+		sb.append(stack.get(stack.size() - 1).node.val);
+		return sb.toString();
 	}
 
 	/**
@@ -205,93 +219,22 @@ public class BinaryTreePaths {
 	 * @author Admin
 	 * 
 	 */
-	private static class Wrapper {
+	private static class MarkTreeNode {
 		TreeNode node;
-		String path;
+		int mark = 0;// mark=1 表示左子树处理返回，mark=2表示右子数处理结束返回。
 
-		public Wrapper() {
+		public MarkTreeNode() {
 
 		}
 
-		public Wrapper(TreeNode node) {
+		public MarkTreeNode(TreeNode node) {
 			this.node = node;
 		}
 
-		public Wrapper(TreeNode node, String path) {
+		public MarkTreeNode(TreeNode node, int mark) {
 			this.node = node;
-			this.path = path;
+			this.mark = mark;
 		}
-	}
-
-	/**
-	 * BFS <br />
-	 * 
-	 * with two Queue
-	 * 
-	 * https://leetcode.com/discuss/67749/bfs-with-two-queue-java-solution
-	 * 
-	 * @param root
-	 * @return
-	 */
-	public List<String> binaryTreePaths5(TreeNode root) {
-		if (root == null) {
-			return resultList;
-		}
-		Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
-		Queue<String> pathQueue = new LinkedList<>();
-		nodeQueue.offer(root);
-		pathQueue.offer(root.val + "");
-		while (!nodeQueue.isEmpty()) {
-			TreeNode currNode = nodeQueue.poll();
-			String item = pathQueue.poll();
-			if (currNode.left == null && currNode.right == null) {
-				resultList.add(item);
-			}
-			if (currNode.left != null) {
-				nodeQueue.offer(currNode.left);
-				pathQueue.offer(item + "->" + currNode.left.val);
-			}
-			if (currNode.right != null) {
-				nodeQueue.offer(currNode.right);
-				pathQueue.offer(item + "->" + currNode.right.val);
-			}
-		}
-
-		return resultList;
-	}
-
-	/**
-	 * 不需要多创建一个函数 <br />
-	 * 
-	 * 3ms
-	 * 
-	 * https://leetcode.com/discuss/55451/clean-solution-accepted-without-helper
-	 * -recursive-function
-	 * 
-	 * @param root
-	 * @return
-	 */
-	public List<String> binaryTreePaths6(TreeNode root) {
-		List<String> pathsList = new ArrayList<String>();
-
-		if (root == null) {
-			return pathsList;
-		}
-
-		if (root.left == null && root.right == null) {
-			pathsList.add(root.val + "");
-			return pathsList;
-		}
-
-		for (String path : binaryTreePaths6(root.left)) {
-			pathsList.add(root.val + "->" + path);
-		}
-
-		for (String path : binaryTreePaths6(root.right)) {
-			pathsList.add(root.val + "->" + path);
-		}
-
-		return pathsList;
 	}
 
 	/**
