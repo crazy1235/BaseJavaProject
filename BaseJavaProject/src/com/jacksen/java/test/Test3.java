@@ -1,9 +1,5 @@
 package com.jacksen.java.test;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.jacksen.java.datastructure.string.JackString;
 
 /**
