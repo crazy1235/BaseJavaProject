@@ -1,6 +1,7 @@
 package com.jacksen.java.leetcode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -25,7 +26,7 @@ public class BinaryTreePostorderTraversal {
 		node3.left = node5;
 
 		BinaryTreePostorderTraversal traversal = new BinaryTreePostorderTraversal();
-		List<Integer> list = traversal.postorderTraversal1(node1);
+		List<Integer> list = traversal.postorderTraversal5(node1);
 		for (int i = 0; i < list.size(); i++) {
 			System.out.print(list.get(i) + " ");
 		}
@@ -197,6 +198,35 @@ public class BinaryTreePostorderTraversal {
 		}
 
 		return resultList;
+	}
+
+	/**
+	 * https://leetcode.com/discuss/71943/preorder-inorder-and-postorder-
+	 * iteratively-summarization <br />
+	 * 
+	 * LinkedList
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public List<Integer> postorderTraversal5(TreeNode root) {
+		LinkedList<Integer> list = new LinkedList<>();
+		if (root == null) {
+			return list;
+		}
+		Stack<TreeNode> stack = new Stack<>();
+		TreeNode tempNode = root;
+		while (!stack.isEmpty() || tempNode != null) {
+			if (tempNode != null) {
+				stack.push(tempNode);
+				list.addFirst(tempNode.val);
+				tempNode = tempNode.right;
+			} else {
+				tempNode = stack.pop().left;
+			}
+		}
+
+		return list;
 	}
 
 	/**

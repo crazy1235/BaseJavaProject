@@ -25,7 +25,7 @@ public class BinaryTreePreorderTraversal {
 		node3.left = node5;
 
 		BinaryTreePreorderTraversal traversal = new BinaryTreePreorderTraversal();
-		List<Integer> list = traversal.preorderTraversal2(node1);
+		List<Integer> list = traversal.preorderTraversal3(node1);
 		for (int i = 0; i < list.size(); i++) {
 			System.out.print(list.get(i) + " ");
 		}
@@ -86,6 +86,32 @@ public class BinaryTreePreorderTraversal {
 				stack.push(tempNode.left);
 			}
 		}
+		return list;
+	}
+
+	/**
+	 * https://leetcode.com/discuss/71943/preorder-inorder-and-postorder-
+	 * iteratively-summarization
+	 * 
+	 * @param root
+	 * @return
+	 */
+	private List<Integer> preorderTraversal3(TreeNode root) {
+		if (root == null) {
+			return list;
+		}
+		Stack<TreeNode> stack = new Stack<>();
+		TreeNode tempNode = root;
+		while (!stack.isEmpty() || tempNode != null) {
+			if (tempNode != null) {
+				stack.push(tempNode);
+				list.add(tempNode.val);
+				tempNode = tempNode.left;
+			} else {
+				tempNode = stack.pop().right;
+			}
+		}
+
 		return list;
 	}
 
