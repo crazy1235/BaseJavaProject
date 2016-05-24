@@ -25,5 +25,4 @@ public class TreeNode<E> {
 		this.leftNode = leftNode;
 		this.rightNode = rightNode;
 	}
-
 }

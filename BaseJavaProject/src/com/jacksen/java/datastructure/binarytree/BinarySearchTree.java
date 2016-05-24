@@ -34,7 +34,8 @@ public class BinarySearchTree {
 	}
 
 	/**
-	 * 搜索结点
+	 * 搜索结点 <br />
+	 * 非递归方式
 	 * 
 	 * @param val
 	 * @return
