@@ -26,7 +26,7 @@ public class BinaryTreePostorderTraversal {
 		node3.left = node5;
 
 		BinaryTreePostorderTraversal traversal = new BinaryTreePostorderTraversal();
-		List<Integer> list = traversal.postorderTraversal5(node1);
+		List<Integer> list = traversal.postorderTraversal6(node1);
 		for (int i = 0; i < list.size(); i++) {
 			System.out.print(list.get(i) + " ");
 		}
@@ -226,6 +226,37 @@ public class BinaryTreePostorderTraversal {
 			}
 		}
 
+		return list;
+	}
+
+	/**
+	 * 非递归方式 <br />
+	 * 
+	 * 参考 Pre order 的preorderTraversal2
+	 * 
+	 * @author jacksen
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public List<Integer> postorderTraversal6(TreeNode root) {
+		LinkedList<Integer> list = new LinkedList<>();
+		if (root == null) {
+			return list;
+		}
+		Stack<TreeNode> stack = new Stack<>();
+		stack.push(root);
+		TreeNode tempNode = null;
+		while (!stack.isEmpty()) {
+			tempNode = stack.pop();
+			list.addFirst(tempNode.val);
+			if (tempNode.left != null) {
+				stack.push(tempNode.left);
+			}
+			if (tempNode.right != null) {
+				stack.push(tempNode.right);
+			}
+		}
 		return list;
 	}
 

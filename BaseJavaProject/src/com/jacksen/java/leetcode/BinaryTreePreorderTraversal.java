@@ -66,6 +66,7 @@ public class BinaryTreePreorderTraversal {
 	/**
 	 * 非递归方式
 	 * 
+	 * @author jacksen
 	 * @param root
 	 * @return
 	 */
