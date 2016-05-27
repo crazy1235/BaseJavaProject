@@ -29,7 +29,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 		node3.right = node5;
 
 		BinaryTreeZigzagLevelOrderTraversal traversal = new BinaryTreeZigzagLevelOrderTraversal();
-		List<List<Integer>> result = traversal.zigzagLevelOrder3(node1);
+		List<List<Integer>> result = traversal.zigzagLevelOrder5(node1);
 		for (int i = 0; i < result.size(); i++) {
 			for (int j = 0; j < result.get(i).size(); j++) {
 				System.out.print(result.get(i).get(j) + " ");
@@ -269,6 +269,58 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 				flag = !flag;
 			}
 		}
+
+		return result;
+	}
+
+	/**
+	 * 2ms <br />
+	 * 
+	 * beats 60.36% of java submissions
+	 * 
+	 * @author jacksen
+	 * @param root
+	 * @return
+	 */
+	public List<List<Integer>> zigzagLevelOrder5(TreeNode root) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (root == null) {
+			return result;
+		}
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.add(root);
+		int i = queue.size(); // 记录每层的结点个数
+		boolean flag = true;
+		TreeNode tempNode = null;
+		LinkedList<Integer> singleLevel = new LinkedList<>();
+		while (!queue.isEmpty()) {
+			if (i == 0) {// 一层记录结束
+				//
+				result.add(singleLevel);
+				//
+				i = queue.size();
+				singleLevel = new LinkedList<>();
+				flag = !flag;
+			}
+			tempNode = queue.poll();
+			if (flag) {
+				singleLevel.add(tempNode.val);
+			} else {
+				singleLevel.addFirst(tempNode.val);
+			}
+
+			--i;
+
+			if (tempNode.left != null) {
+				queue.offer(tempNode.left);
+			}
+			if (tempNode.right != null) {
+				queue.offer(tempNode.right);
+			}
+
+		}
+		
+		result.add(singleLevel);
 
 		return result;
 	}
