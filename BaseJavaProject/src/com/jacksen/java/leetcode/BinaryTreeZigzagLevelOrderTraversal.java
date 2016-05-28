@@ -49,7 +49,6 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 	 */
 	public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
-
 		if (root == null) {
 			return result;
 		}
@@ -74,22 +73,18 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 			}
 			tempNode = queue.poll();
 			singleLevel.add(tempNode.val);
-
 			--i;
-
 			if (tempNode.left != null) {
 				queue.add(tempNode.left);
 			}
 			if (tempNode.right != null) {
 				queue.add(tempNode.right);
 			}
-
 		}
 		if (flag) {
 			Collections.reverse(singleLevel);
 		}
 		result.add(singleLevel);
-
 		return result;
 	}
 
@@ -308,20 +303,15 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 			} else {
 				singleLevel.addFirst(tempNode.val);
 			}
-
 			--i;
-
 			if (tempNode.left != null) {
 				queue.offer(tempNode.left);
 			}
 			if (tempNode.right != null) {
 				queue.offer(tempNode.right);
 			}
-
 		}
-		
 		result.add(singleLevel);
-
 		return result;
 	}
 
