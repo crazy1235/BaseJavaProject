@@ -1,5 +1,7 @@
 package com.jacksen.java.leetcode;
 
+import com.jacksen.java.leetcode.common.TreeNode;
+
 /**
  * https://leetcode.com/problems/same-tree/
  * 
@@ -66,18 +68,7 @@ public class SameTree {
 	 */
 	public boolean isSameTree2(TreeNode p, TreeNode q) {
 		return (p != null && q != null && p.val == q.val
-				&& isSameTree(p.left, q.left) && isSameTree(p.right, q.right))
+				&& isSameTree2(p.left, q.left) && isSameTree2(p.right, q.right))
 				|| (p == null && q == null);
 	}
-
-	private static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		public TreeNode(int x) {
-			this.val = x;
-		}
-	}
-
 }

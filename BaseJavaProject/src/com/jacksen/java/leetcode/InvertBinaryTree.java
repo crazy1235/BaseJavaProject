@@ -1,6 +1,6 @@
 package com.jacksen.java.leetcode;
 
-import java.util.Stack;
+import com.jacksen.java.leetcode.common.TreeNode;
 
 /**
  * https://leetcode.com/problems/invert-binary-tree/
@@ -76,13 +76,4 @@ public class InvertBinaryTree {
 		return root;
 	}
 
-	private static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 }
