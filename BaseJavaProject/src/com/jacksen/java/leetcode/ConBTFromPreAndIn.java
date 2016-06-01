@@ -1,5 +1,8 @@
 package com.jacksen.java.leetcode;
 
+import java.util.HashMap;
+import java.util.Stack;
+
 import com.jacksen.java.leetcode.common.TreeNode;
 
 /**
@@ -14,10 +17,10 @@ public class ConBTFromPreAndIn {
 
 		ConBTFromPreAndIn build = new ConBTFromPreAndIn();
 
-		int[] preorder = new int[] { 1, 2, 3 };
-		int[] inorder = new int[] { 2, 3, 1 };
+		int[] preorder = new int[] { 1, 2, 4, 3, 5, 6 };
+		int[] inorder = new int[] { 4, 2, 1, 5, 3, 6 };
 
-		TreeNode rootNode = build.buildTree(preorder, inorder);
+		TreeNode rootNode = build.buildTree2(preorder, inorder);
 		System.out.println(rootNode.val);
 	}
 
@@ -117,6 +120,45 @@ public class ConBTFromPreAndIn {
 			}
 		}
 		return -1;
+	}
+
+	/**
+	 * 
+	 * @param preorder
+	 * @param inorder
+	 * @return
+	 */
+	public TreeNode buildTree2(int[] preorder, int[] inorder) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < inorder.length; i++) {
+			map.put(inorder[i], i);
+		}
+		TreeNode root = null;
+		TreeNode p = root;
+		Stack<TreeNode> stack = new Stack<>();
+		for (int i = 0; i < preorder.length; i++) {
+			int temp = map.get(preorder[i]);
+			TreeNode node = new TreeNode(preorder[i]);
+			if (stack.isEmpty()) {
+				root = node;
+//				stack.add(node);
+				p = root;
+			} else {
+				if (temp < map.get(stack.peek().val)) {
+					p.left = node;
+					p = p.left;
+				} else {
+					while (!stack.isEmpty() && temp > map.get(stack.peek().val)) {
+						p = stack.pop();
+					}
+					p.right = node;
+					p = p.right;
+				}
+			}
+			stack.add(node);
+		}
+
+		return root;
 	}
 
 }
