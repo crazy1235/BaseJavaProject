@@ -1,4 +1,4 @@
-package com.jacksen.java.observer;
+package com.jacksen.java.designpattern.observer;
 
 public class SimpleTest {
 	public static void main(String[] args) {

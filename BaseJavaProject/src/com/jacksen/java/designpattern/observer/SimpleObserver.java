@@ -1,4 +1,4 @@
-package com.jacksen.java.observer;
+package com.jacksen.java.designpattern.observer;
 
 import java.util.Observable;
 import java.util.Observer;
