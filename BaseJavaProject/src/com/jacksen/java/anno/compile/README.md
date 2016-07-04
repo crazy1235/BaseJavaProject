@@ -1,12 +1,12 @@
 
-##±àÒëÊ±Annotation
+##ç¼–è¯‘æ—¶Annotation
 
-±àÒëÊ±AnnotationÖ¸@RetentionÎªCLASSµÄAnnotation£¬ÓÉ±àÒëÆ÷×Ô¶¯½âÎö¡£
+ç¼–è¯‘æ—¶AnnotationæŒ‡@Retentionä¸ºCLASSçš„Annotationï¼Œç”±ç¼–è¯‘å™¨è‡ªåŠ¨è§£æžã€‚
 
-ÐèÒª×öµÄ²½Öè£º
+éœ€è¦åšçš„æ­¥éª¤ï¼š
 
-- ×Ô¶¨ÒåÀà¼Ì³ÐAbstractProcessor
-- ÖØÐ´process·½·¨
+- è‡ªå®šä¹‰ç±»ç»§æ‰¿AbstractProcessor
+- é‡å†™processæ–¹æ³•
 
 
-Êµ¼ÊÉÏ±àÒëÆ÷»áÔÚ±àÒëÊ±×Ô¶¯²éÕÒËùÓÐ¼Ì³ÐAbastractProcessorµÄÀà¡£È»ºóµ÷ÓÃprocess·½·¨´¦Àí¡£
+å®žé™…ä¸Šç¼–è¯‘å™¨ä¼šåœ¨ç¼–è¯‘æ—¶è‡ªåŠ¨æŸ¥æ‰¾æ‰€æœ‰ç»§æ‰¿AbastractProcessorçš„ç±»ã€‚ç„¶åŽè°ƒç”¨processæ–¹æ³•å¤„ç†ã€‚
