@@ -1,4 +1,4 @@
-package com.jacksen.java.anno;
+package com.jacksen.java.anno.runtime;
 
 import java.lang.reflect.Method;
 
@@ -14,6 +14,9 @@ public class TestAnno {
 //				String methodName = method.getName();
 //				System.out.println(methodName);
 				
+				
+				boolean isAnnotated = method.isAnnotationPresent(MyAnno.class);//判断是否被某个Annotation修饰
+				method.getAnnotations();//得到所有的Annotation
 				MyAnno myAnno = method.getAnnotation(MyAnno.class);
 				System.out.println(myAnno.setName());
 				

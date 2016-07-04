@@ -1,4 +1,4 @@
-package com.jacksen.java.anno;
+package com.jacksen.java.anno.compile;
 
 import java.util.Set;
 

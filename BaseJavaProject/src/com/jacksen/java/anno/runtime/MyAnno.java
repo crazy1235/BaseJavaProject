@@ -1,4 +1,4 @@
-package com.jacksen.java.anno;
+package com.jacksen.java.anno.runtime;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
