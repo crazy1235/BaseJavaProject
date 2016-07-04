@@ -1,5 +1,6 @@
 package com.jacksen.java.anno.compile;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -8,10 +9,12 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
+
 /**
  * 注解处理器
+ * 
  * @author Admin
- *
+ * 
  */
 public class MyProcessor extends AbstractProcessor {
 
@@ -20,14 +23,20 @@ public class MyProcessor extends AbstractProcessor {
 		// TODO Auto-generated method stub
 		super.init(processingEnv);
 	}
-	
+
 	@Override
 	public boolean process(Set<? extends TypeElement> annotations,
 			RoundEnvironment roundEnv) {
-		
+
+		HashMap<String, Integer> map = new HashMap<>();
+		for (TypeElement element : annotations) {
+			RuntimeAnno anno = element.getAnnotation(RuntimeAnno.class);
+			map.put(element.getEnclosingElement().toString(), anno.value());
+		}
+
 		return false;
 	}
-	
+
 	/**
 	 * 返回需要处理的注解的类的getCanonicalName集合
 	 */
