@@ -9,8 +9,11 @@ package com.jacksen.java.leetcode;
 public class IntegerToEnglishWords {
 
 	public static void main(String[] args) {
-		String result = new IntegerToEnglishWords().numberToWords(1234567890);
+		IntegerToEnglishWords words = new IntegerToEnglishWords();
+		String result = words.numberToWords(50868);
 		System.out.println(result);
+
+		System.out.println(words.numberToWords2(50868));
 	}
 
 	public String numberToWords(int num) {
@@ -21,21 +24,26 @@ public class IntegerToEnglishWords {
 		}
 	}
 
+	/**
+	 * 从大到小拼接
+	 * 
+	 * @param num
+	 * @return
+	 */
 	public String helper(int num) {
 		String result = "";
-		int a = 0;
-		if ((a = num / 1000000000) > 0) {
-			result += helper(a) + getWord(0) + getWord(1000000000)
-					+ helper(num % 1000000000);
-		} else if ((a = num / 1000000) > 0) {
-			result += helper(a) + getWord(0) + getWord(1000000)
+		if (num / 1000000000 > 0) {
+			result += helper(num / 1000000000) + getWord(0)
+					+ getWord(1000000000) + helper(num % 1000000000);
+		} else if (num / 1000000 > 0) {
+			result += helper(num / 1000000) + getWord(0) + getWord(1000000)
 					+ helper(num % 1000000);
-		} else if ((a = num / 1000) > 0) {
-			result += helper(a) + getWord(0) + getWord(1000)
+		} else if (num / 1000 > 0) {
+			result += helper(num / 1000) + getWord(0) + getWord(1000)
 					+ helper(num % 1000);
-		} else if ((a = num / 100) > 0) {
-			result += getWord(0) + getWord(a) + getWord(0) + getWord(100)
-					+ helper(num % 100);
+		} else if (num / 100 > 0) {
+			result += getWord(0) + getWord(num / 100) + getWord(0)
+					+ getWord(100) + helper(num % 100);
 		} else if (num >= 20) {
 			result += getWord(0) + getWord((num / 10) * 10) + helper(num % 10);
 		} else if (num > 0) {
@@ -44,6 +52,49 @@ public class IntegerToEnglishWords {
 			return "";
 		}
 		return result;
+	}
+
+	private String[] units = { "", "Thousand", "Million", "Billion" };
+
+	/**
+	 * 从小到大拼接
+	 * 
+	 * @param num
+	 * @return
+	 */
+	public String numberToWords2(int num) {
+		if (num == 0) {
+			return "Zero";
+		}
+		String result = "";
+		int i = 0;
+		while (num > 0) {
+			if (num % 1000 > 0) {
+				result = helper2(num % 1000) + units[i] + getWord(0) + result;
+			}
+			num /= 1000;
+			i++;
+		}
+		return result.trim();
+	}
+
+	/**
+	 * 
+	 * @param num
+	 * @return
+	 */
+	public String helper2(int num) {
+		if (num >= 100) {
+			return getWord(num / 100) + getWord(0) + getWord(100) + getWord(0)
+					+ helper2(num % 100);
+		} else if (num > 20) {
+			return getWord((num / 10) * 10) + getWord(0) + helper2(num % 10);
+		} else if (num > 0) {
+			return getWord(num) + getWord(0);
+		} else if (num == 0) {
+			return "";
+		}
+		return "";
 	}
 
 	public String getWord(int num) {
