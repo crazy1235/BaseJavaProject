@@ -1,7 +1,10 @@
 package com.jacksen.java.list;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 public class TestList {
 
@@ -16,17 +19,20 @@ public class TestList {
 		System.out.println("TestList --- " + list.hashCode());
 
 		TestList2 list2 = new TestList2(list);
-		
+
 		list.clear();
 		list.add("abc");
-		
-		System.out.println("TestList --- " + list.hashCode()  +" --- " + list.toString());
-		
+
+		System.out.println("TestList --- " + list.hashCode() + " --- "
+				+ list.toString());
+
 		list2.putCode();
-		
-//		list.clear();
-		
+
+		// list.clear();
+
 		list2.setData(list);
+
+		
 	}
 
 }

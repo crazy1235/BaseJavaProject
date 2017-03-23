@@ -1,7 +1,5 @@
 package com.jacksen.java.leetcode;
 
-import java.util.PrimitiveIterator.OfDouble;
-
 import com.jacksen.java.leetcode.common.ListNode;
 import com.jacksen.java.leetcode.common.ListNodeUtils;
 
