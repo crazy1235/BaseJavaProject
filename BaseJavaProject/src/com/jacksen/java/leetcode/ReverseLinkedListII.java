@@ -35,7 +35,8 @@ public class ReverseLinkedListII {
 		node4.next = node5;
 		node5.next = node6;
 
-		ListNode result = new ReverseLinkedListII().reverseBetween2(node1, 1, 6);
+		ListNode result = new ReverseLinkedListII()
+				.reverseBetween2(node1, 1, 6);
 
 		ListNodeUtils.printListNode(result);
 	}
@@ -67,9 +68,8 @@ public class ReverseLinkedListII {
 			preNode = preNode.next;
 		}
 
-		
 		// ----
-		
+
 		ListNode tempNode = preNode.next;
 
 		Stack<ListNode> stack = new Stack<>();
@@ -97,8 +97,18 @@ public class ReverseLinkedListII {
 		return dummyNode.next;
 	}
 
-	
-
+	/**
+	 * 通过迭代方式反转m-n的结点
+	 * 
+	 * Runtime : 0ms
+	 * 
+	 * beats 18.23% of java submissions
+	 * 
+	 * @param head
+	 * @param m
+	 * @param n
+	 * @return
+	 */
 	public ListNode reverseBetween2(ListNode head, int m, int n) {
 		if (head == null || head.next == null || m >= n) {
 			return head;
@@ -115,10 +125,10 @@ public class ReverseLinkedListII {
 		}
 
 		// iteration
-		
+
 		ListNode nodeA = preNode.next;
 		ListNode nodeB = preNode.next.next;
-		ListNode nodeResult = nodeA; 
+		ListNode nodeResult = nodeA;
 
 		int i = 0;
 		while (m + i < n) {
@@ -126,13 +136,48 @@ public class ReverseLinkedListII {
 			nodeB.next = nodeResult;
 			nodeResult = nodeB;
 			nodeB = nodeA.next;
+			i++;
 		}
-		
+
 		//
 		preNode.next = nodeResult;
-		
+
 		return dummyNode.next;
 	}
-
 	
+	/**
+	 * 方法二的优化方式
+	 * 
+	 * @param head
+	 * @param m
+	 * @param n
+	 * @return
+	 */
+	public ListNode reverseBetween3(ListNode head, int m, int n) {
+		if (head == null || head.next == null || m >= n) {
+			return head;
+		}
+
+		ListNode dummyNode = new ListNode(0);
+		dummyNode.next = head;
+		head = dummyNode;
+
+		ListNode preNode = head; // pre node
+
+		for (int i = 1; i < m; i++) {
+			preNode = preNode.next;
+		}
+
+		ListNode nodeA = preNode.next;
+		ListNode nodeB = preNode.next.next;
+
+		for (int i = 0; i < n - m; i++) {
+			nodeA.next = nodeB.next;
+			nodeB.next = preNode.next;
+			preNode.next = nodeB;
+			nodeB = nodeA.next;
+		}
+
+		return dummyNode.next;
+	}
 }
