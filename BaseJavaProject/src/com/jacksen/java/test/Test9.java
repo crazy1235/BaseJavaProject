@@ -13,6 +13,10 @@ public class Test9 {
 				.matches("^\\d{6}(?:1|2){1}\\d{3}(0[1-9]|1[0-2])[0-3][0-9](\\d{4}|\\d{3}X)$");
 
 		System.out.println(result);
+		
+		result = idCardString.matches("(\\d{14}[0-9a-zA-Z])|(\\d{17}[0-9a-zA-Z])");
+		
+		System.out.println(result);
 	}
 
 }
