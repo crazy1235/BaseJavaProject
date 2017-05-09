@@ -20,6 +20,10 @@ public class Test14 {
 		System.out.println(mGroupFlags);
 		System.out.println(mGroupFlags & FLAG_DISALLOW_INTERCEPT);
 
-		// System.out.println(1 << 0);
+		System.out.println(1 << 0 == 0);
+		
+		//
+		
+		System.out.println(System.currentTimeMillis());
 	}
 }
