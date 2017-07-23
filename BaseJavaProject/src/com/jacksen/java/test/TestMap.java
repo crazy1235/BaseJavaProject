@@ -1,6 +1,7 @@
 package com.jacksen.java.test;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 测试Map的子类
@@ -33,7 +34,6 @@ public class TestMap {
 		hashMap.put(null, "c");
 
 		System.out.println(hashMap.size());
-
 	}
 
 }
