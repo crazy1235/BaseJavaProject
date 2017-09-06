@@ -9,7 +9,16 @@ package com.jacksen.java.algorithm;
 public class ReverseString {
 
 	public static void main(String[] args) {
-			
+		String str = "abc123";
+		System.out.println(reverseString(str));
+	}
+
+	private static String reverseString(String s) {
+		StringBuffer sBuffer = new StringBuffer();
+		for (int i = s.length() - 1; i >= 0; i--) {
+			sBuffer.append(s.charAt(i));
+		}
+		return sBuffer.toString();
 	}
 
 }
