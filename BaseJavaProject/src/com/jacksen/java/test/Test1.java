@@ -30,5 +30,9 @@ public class Test1 {
 		a = (0x00ffffff & 0xff0085ec) + (2130706432);
 		System.out.println(Integer.toHexString(a));
 	}
+	
+	public final void measure(){
+		
+	}
 
 }
