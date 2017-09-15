@@ -1,12 +1,15 @@
 package com.jacksen.java.datastructure.sort;
 
+import java.util.Arrays;
+
 /**
- * 冒泡排序
+ * 各种排序
  * 
  * @author Admin
  * 
  */
-public class BubblingSort {
+public class SortAlgorithm {
+
 	public static void main(String[] args) {
 
 		int[] numbers = new int[] { 23, 34, 12, 3, 5, 56, 10 };
