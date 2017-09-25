@@ -1,6 +1,6 @@
 package com.jacksen.java.proxy;
 
-public interface MyInter {
+public interface ISubject {
 
 	void saySth();
 	

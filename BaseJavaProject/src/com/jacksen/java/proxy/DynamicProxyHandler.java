@@ -3,11 +3,11 @@ package com.jacksen.java.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class SaySthHandler implements InvocationHandler{
+public class DynamicProxyHandler implements InvocationHandler{
 
 	private Object object;
 	
-	public SaySthHandler(Object object){
+	public DynamicProxyHandler(Object object){
 		this.object = object;
 	}
 	

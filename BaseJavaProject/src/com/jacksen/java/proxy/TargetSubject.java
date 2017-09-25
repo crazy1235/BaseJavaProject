@@ -1,6 +1,6 @@
 package com.jacksen.java.proxy;
 
-public class Child implements MyInter{
+public class TargetSubject implements ISubject{
 
 	@Override
 	public void saySth() {
